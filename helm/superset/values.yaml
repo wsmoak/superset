@@ -121,7 +121,11 @@ extraConfigs: {}
   #       tables: []
 
 # -- Extra files to mount on `/app/pythonpath` as secrets
-extraSecrets: {}
+extraSecrets: {
+  secret_key:
+    name: superset-secrets
+    key: secret_key
+}
 
 extraVolumes: []
   # - name: customConfig
