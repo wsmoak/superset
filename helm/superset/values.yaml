@@ -89,7 +89,12 @@ extraEnv: {}
   # OAUTH_WHITELIST_REGEX: ...
 
 # -- Extra environment variables in RAW format that will be passed into pods
-extraEnvRaw: []
+extraEnvRaw:
+  - name: SUPERSET_SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: superset-secrets
+        key: secret_key
   # Load DB password from other secret (e.g. for zalando operator)
   # - name: DB_PASS
   #   valueFrom:
@@ -121,11 +126,7 @@ extraConfigs: {}
   #       tables: []
 
 # -- Extra files to mount on `/app/pythonpath` as secrets
-extraSecrets: {
-  secret_key:
-    name: superset-secrets
-    key: secret_key
-}
+extraSecrets: {}
 
 extraVolumes: []
   # - name: customConfig
